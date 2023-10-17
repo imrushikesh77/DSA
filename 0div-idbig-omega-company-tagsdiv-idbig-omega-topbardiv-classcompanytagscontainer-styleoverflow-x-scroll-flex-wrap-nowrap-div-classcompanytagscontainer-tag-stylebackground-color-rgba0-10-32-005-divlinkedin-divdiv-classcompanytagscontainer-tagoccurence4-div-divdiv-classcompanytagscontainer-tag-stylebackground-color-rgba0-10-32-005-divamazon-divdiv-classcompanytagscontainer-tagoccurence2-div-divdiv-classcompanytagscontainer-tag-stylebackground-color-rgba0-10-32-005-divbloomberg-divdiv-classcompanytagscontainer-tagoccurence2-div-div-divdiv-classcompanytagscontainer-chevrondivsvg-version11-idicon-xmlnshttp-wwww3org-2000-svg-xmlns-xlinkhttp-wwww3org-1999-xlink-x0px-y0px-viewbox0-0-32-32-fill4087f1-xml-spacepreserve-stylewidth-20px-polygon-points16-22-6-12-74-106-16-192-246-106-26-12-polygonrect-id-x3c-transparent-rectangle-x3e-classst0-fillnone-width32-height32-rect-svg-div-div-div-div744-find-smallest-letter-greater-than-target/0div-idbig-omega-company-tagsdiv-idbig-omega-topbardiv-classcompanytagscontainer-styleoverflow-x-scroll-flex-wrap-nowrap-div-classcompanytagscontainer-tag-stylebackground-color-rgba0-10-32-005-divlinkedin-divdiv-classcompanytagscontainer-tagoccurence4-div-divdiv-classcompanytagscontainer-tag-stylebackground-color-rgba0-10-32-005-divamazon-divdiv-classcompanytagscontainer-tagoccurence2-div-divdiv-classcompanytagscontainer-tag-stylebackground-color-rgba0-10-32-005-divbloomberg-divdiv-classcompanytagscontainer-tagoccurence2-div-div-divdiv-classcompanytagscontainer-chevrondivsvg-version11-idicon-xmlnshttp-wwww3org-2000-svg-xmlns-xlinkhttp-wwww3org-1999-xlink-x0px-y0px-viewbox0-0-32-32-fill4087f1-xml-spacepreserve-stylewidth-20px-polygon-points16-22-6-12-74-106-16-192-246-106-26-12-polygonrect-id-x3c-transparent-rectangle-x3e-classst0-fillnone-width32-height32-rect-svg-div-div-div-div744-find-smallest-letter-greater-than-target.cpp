@@ -6,11 +6,11 @@ public:
         if(target>letters[j])return letters[i];
         while(i<=j){
             int mid = i + (j-i)/2;
-            if(letters[mid]>target){
-                j=mid-1;
+            if(letters[mid]<=target){
+                i=mid+1;
             }
             else{
-                i=mid+1;
+                j=mid-1;
             }
         }
         return letters[i%letters.size()];
