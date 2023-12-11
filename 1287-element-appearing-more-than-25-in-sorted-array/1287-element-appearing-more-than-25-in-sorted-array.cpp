@@ -1,14 +1,15 @@
 class Solution {
 public:
     int findSpecialInteger(vector<int>& arr) {
-        unordered_map<int,int>m;
-        for(auto it:arr)m[it]++;
-        int ans = -1;
-        for(auto it:arr){
-            if(m[it]>=(arr.size()/4)){
-                if(m[ans]<m[it])ans=it;
-            }
+        int cnt = 1;
+        int curr = arr[0];
+        int qr = arr.size()/4;
+        for(int i=1;i<arr.size();i++){
+            if(curr==arr[i])cnt++;
+            else cnt=1;
+            if(cnt>qr)return arr[i];
+            curr=arr[i];
         }
-        return ans;
+        return curr;
     }
 };
